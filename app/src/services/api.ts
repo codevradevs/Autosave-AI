@@ -22,39 +22,39 @@ api.interceptors.response.use(
 );
 
 export const authAPI = {
-  register: (data) => api.post('/users/register', data),
-  login: (data) => api.post('/users/login', data),
+  register: (data: Record<string, unknown>) => api.post('/users/register', data),
+  login: (data: Record<string, unknown>) => api.post('/users/login', data),
   getMe: () => api.get('/users/me'),
-  updateProfile: (data) => api.patch('/users/me', data),
+  updateProfile: (data: Record<string, unknown>) => api.patch('/users/me', data),
 };
 
 export const walletAPI = {
   get: () => api.get('/wallet'),
-  unlock: (amount) => api.post('/wallet/unlock', { amount }),
+  unlock: (amount: number) => api.post('/wallet/unlock', { amount }),
 };
 
 export const transactionAPI = {
-  list: (params) => api.get('/transactions', { params }),
+  list: (params?: Record<string, unknown>) => api.get('/transactions', { params }),
 };
 
 export const mpesaAPI = {
-  deposit: (amount) => api.post('/mpesa/deposit', { amount }),
-  withdraw: (amount) => api.post('/mpesa/withdraw', { amount }),
+  deposit: (amount: number) => api.post('/mpesa/deposit', { amount }),
+  withdraw: (amount: number) => api.post('/mpesa/withdraw', { amount }),
 };
 
 export const autosaveAPI = {
   insights: () => api.get('/autosave/insights'),
   trigger: () => api.post('/autosave/trigger'),
   toggle: () => api.patch('/autosave/toggle'),
-  setPreference: (preference) => api.patch('/autosave/preference', { preference }),
+  setPreference: (preference: string) => api.patch('/autosave/preference', { preference }),
 };
 
 export const goalsAPI = {
   list: () => api.get('/goals'),
-  create: (data) => api.post('/goals', data),
-  contribute: (id, amount) => api.post(`/goals/${id}/contribute`, { amount }),
-  withdraw: (id, amount) => api.post(`/goals/${id}/withdraw`, { amount }),
-  delete: (id) => api.delete(`/goals/${id}`),
+  create: (data: Record<string, unknown>) => api.post('/goals', data),
+  contribute: (id: string, amount: number) => api.post(`/goals/${id}/contribute`, { amount }),
+  withdraw: (id: string, amount: number) => api.post(`/goals/${id}/withdraw`, { amount }),
+  delete: (id: string) => api.delete(`/goals/${id}`),
 };
 
 export default api;

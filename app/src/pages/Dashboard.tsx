@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Zap, Lock, ArrowUpRight, ArrowDownLeft, Sparkles } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { mpesaAPI, autosaveAPI, transactionAPI } from '../services/api';
+import { autosaveAPI, transactionAPI } from '../services/api';
 
 const fmt = (n: number) => `KES ${n?.toLocaleString() ?? 0}`;
 
 export default function Dashboard() {
-  const { user, wallet, insights, fetchMe, fetchInsights, setNotification, setWallet } = useStore();
+  const { user, wallet, insights, fetchMe, fetchInsights, setNotification } = useStore();
   const [transactions, setTransactions] = useState<any[]>([]);
   const [saving, setSaving] = useState(false);
 

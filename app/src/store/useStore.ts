@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { authAPI, walletAPI, autosaveAPI } from '../services/api';
+import { authAPI, autosaveAPI } from '../services/api';
 
 interface User {
   id: string;
@@ -46,7 +46,7 @@ interface AppStore {
   fetchInsights: () => Promise<void>;
 }
 
-export const useStore = create<AppStore>((set, get) => ({
+export const useStore = create<AppStore>((set) => ({
   user: null,
   wallet: null,
   insights: null,

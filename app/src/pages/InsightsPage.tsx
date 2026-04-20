@@ -7,19 +7,13 @@ import { autosaveAPI } from '../services/api';
 const fmt = (n: number) => `KES ${n?.toLocaleString() ?? 0}`;
 
 export default function InsightsPage() {
-  const { insights, user, wallet, fetchInsights, setNotification } = useStore();
+  const { insights, user, fetchInsights, setNotification } = useStore();
 
   useEffect(() => { fetchInsights(); }, []);
 
   const profile = (insights as any)?.profile;
 
-  const savingLabel = {
-    low: { label: 'Conservative', color: 'text-blue-400', bg: 'bg-blue-400/10' },
-    medium: { label: 'Balanced', color: 'text-[#2EE9A8]', bg: 'bg-[#2EE9A8]/10' },
-    aggressive: { label: 'Aggressive', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-  }[user?.savingPreference ?? 'medium'];
-
-  const riskLabel = profile?.riskScore >= 0.7 ? 'Stable' : profile?.riskScore >= 0.4 ? 'Moderate' : 'Volatile';
+const riskLabel = profile?.riskScore >= 0.7 ? 'Stable' : profile?.riskScore >= 0.4 ? 'Moderate' : 'Volatile';
   const riskColor = profile?.riskScore >= 0.7 ? 'text-[#2EE9A8]' : profile?.riskScore >= 0.4 ? 'text-yellow-400' : 'text-red-400';
 
   const handlePreference = async (pref: string) => {
@@ -147,7 +141,7 @@ export default function InsightsPage() {
             { key: 'low', label: 'Conservative', desc: '2% of balance', color: 'blue' },
             { key: 'medium', label: 'Balanced', desc: '5% of balance', color: 'green' },
             { key: 'aggressive', label: 'Aggressive', desc: '10% of balance', color: 'orange' },
-          ].map(({ key, label, desc, color }) => (
+          ].map(({ key, label, desc }) => (
             <button
               key={key}
               onClick={() => handlePreference(key)}

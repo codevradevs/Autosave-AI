@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Brain, Target, Lock, Shield, TrendingUp, Star, Check } from 'lucide-react';
+import { ArrowRight, Zap, Brain, Target, Lock, TrendingUp, Star, Check } from 'lucide-react';
 
 export default function HomePage() {
   return (

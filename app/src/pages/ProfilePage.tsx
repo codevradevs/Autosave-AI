@@ -5,7 +5,7 @@ import { useStore } from '../store/useStore';
 import { authAPI, autosaveAPI } from '../services/api';
 
 export default function ProfilePage() {
-  const { user, wallet, fetchMe, setNotification, setUser } = useStore();
+  const { user, wallet, setNotification, setUser } = useStore();
   const [form, setForm] = useState({ name: '', email: '', mpesaNumber: '' });
   const [loading, setLoading] = useState(false);
   const [toggling, setToggling] = useState(false);
